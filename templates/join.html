@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}加入{% endblock %}
+
+{% block header %}
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+<style>
+    .mdui-textfield {
+        padding-top: 5px;
+    }
+    h2 {
+        margin-block-start: 0;
+        margin-block-end: 5px;
+    }
+</style>
+{% endblock %}
+
+{% block navitem %}
+<a href="#app" class="mdui-ripple mdui-ripple-white">加入天空岛</a>
+{% endblock %}
+
+{% block body %}
+<h2>欢迎注册天空岛，请先完成以下表单：</h2>
+<form method="post">
+    <div class="mdui-textfield mdui-textfield-floating-label">
+        <label class="mdui-textfield-label">暗号 (不知道暗号？去看看服务条款吧~)</label>
+        <input class="mdui-textfield-input" type="text" name="key" required/>
+    </div>
+    <div class="h-captcha" data-sitekey="98a8f8ff-a007-4ea8-aaa0-e3b932118220"></div>
+    <label class="mdui-checkbox">
+        <input type="checkbox" id="check" />
+        <i class="mdui-checkbox-icon"></i>
+        我已阅读并同意 <a href="https://tdocs.rdpstudio.top/tos" target="_blank">《天空岛服务条款》</a>
+    </label>
+    <br>
+    <button class="mdui-btn mdui-btn-raised mdui-ripple" disabled id="submit">提交</button>
+</form>
+<script>
+    document.getElementById("check").addEventListener("click", function() {
+        if (document.getElementById("check").checked) {
+            document.getElementById("submit").disabled = false;
+        } else {
+            document.getElementById("submit").disabled = true;
+        }
+    });
+</script>
+{% endblock %}
